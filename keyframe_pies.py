@@ -152,12 +152,8 @@ def unregister():
         kmi = kmis.find_from_operator(idname="anim.keyframe_insert_menu")
         km.restore_item_to_default(kmi)
     
-    # unregister
-    bpy.utils.unregister_class(VIEW_3D_PANEL_ResetKeybindsPanel)
-    bpy.utils.unregister_class(VIEW_3D_PIE_KeyframePie)
-    
     for _class in classes:
-        bpy.utils.register_class(_class)
+        bpy.utils.unregister_class(_class)
 
 
 

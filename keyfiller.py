@@ -73,7 +73,7 @@ def register():
 
 def unregister():
     for _class in classes:
-        bpy.utils.register_class(_class)
+        bpy.utils.unregister_class(_class)
         
         if (callable(_class.menu_item)):
             bpy.types.DOPESHEET_MT_key.remove(_class.menu_item)
