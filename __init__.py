@@ -25,7 +25,7 @@ bl_info = {
 
 sub_modules_names = (
     "keyframe_pies",
-    #"keyfiller",
+    "keyfiller",
 )
 
 
@@ -88,6 +88,15 @@ def unregister_submodule(mod):
                 bpy.utils.register_class(CrustaceanAnimationPrefs)
                 if name in prefs:
                     del prefs[name]
+
+
+
+
+#
+# Preference settings
+#
+
+
 
 
 class CrustaceanAnimationPrefs(AddonPreferences):
@@ -172,7 +181,7 @@ class CrustaceanAnimationPrefs(AddonPreferences):
                         del prefs.layout
 
         row = layout.row()
-        row.label(text="End of Crustacean Animation Toolset", icon="FILE_PARENT")
+        row.label(text="Module settings are applied after program restart", icon="FILE_PARENT")
 
 
 for mod in sub_modules:
@@ -209,85 +218,6 @@ classes = (
     CrustaceanAnimationPrefs,
 )
 
-
-
-
-
-#
-# Keybinding Latchers
-#
-
-
-
-
-
-class VIEW_3D_PANEL_ResetKeybindsPanel(bpy.types.Panel):
-    """This panel will have a button to reset the keybinds
-        because they don't seem to persist through program close/open"""
-    bl_label = "Crustacean Animation Toolset"
-    bl_idname = "panel.VIEW_3D_PANEL_ResetKeybindsPanel"
-    bl_space_type = 'VIEW_3D'
-    bl_region_type = 'TOOLS'
-
-    def draw(self, context):
-        layout = self.layout
-
-        obj = context.object
-
-        row = layout.row()
-        row.label(text="Start add-on")
-
-        row = layout.row()
-        row.operator("kfp.reset_keybinds", icon='ACTION')
-    
-
-class VIEW_3D_PANEL_ResetKeybinds(bpy.types.Operator):
-    """Set the keybind for KeyframePies again"""
-    bl_idname = "kfp.reset_keybinds"
-    bl_label = "Start add-on"
-    
-    def execute(self, context):
-        set_keybinds()
-        
-        return {'FINISHED'}
-
-def set_keybinds():
-    # handle the keymap
-    wm = bpy.context.window_manager
-    
-    # Remake the old mapping to trigger on "Release"
-    kc = wm.keyconfigs.active
-    _keybind = "I"
-    if kc:
-        km = kc.keymaps.find(name="Pose")
-        kmis = km.keymap_items
-        kmi = kmis.find_from_operator(idname="anim.keyframe_insert_menu")
-        kmi.value = "RELEASE"
-        _keybind = kmi.type
-        #km.restore_item_to_default(kmi)
-    
-    # Add the new keymap
-    kc = wm.keyconfigs.addon
-    if kc:
-        km = kc.keymaps.new(name='Pose')
-        kmi = km.keymap_items.new('wm.call_menu_pie', _keybind, 'CLICK_DRAG')
-        kmi.properties.name = "VIEW_3D_PIE_KeyframePie"
-        addon_keymaps.append((km, kmi))
-
-def reset_keybinds():
-    # handle the keymap
-    for km, kmi in addon_keymaps:
-        km.keymap_items.remove(kmi)
-    addon_keymaps.clear()
-    
-    # Restore the previous keybind to its original value
-    wm = bpy.context.window_manager
-    kc = wm.keyconfigs.active
-    if kc:
-        km = kc.keymaps.find(name="Pose")
-        kmis = km.keymap_items
-        kmi = kmis.find_from_operator(idname="anim.keyframe_insert_menu")
-        km.restore_item_to_default(kmi)
         
         
         

@@ -1,10 +1,10 @@
 bl_info = {
     "name": "Keyframe Pies",
     "author": "crab emoji",
-    "version": (0, 4),
+    "version": (0, 5),
     "blender": (3, 6, 2),
     "location": "Hold I for pie :P",
-    "description": "Replaces the weird ass old keyframe insertion menu with a stylish pie menu.",
+    "description": "Replaces the old keyframe insertion menu with a stylish pie menu.",
     "warning": " is mye fist adon",
     "doc_url": "",
     "category": "Animation",
@@ -155,6 +155,9 @@ def unregister():
     # unregister
     bpy.utils.unregister_class(VIEW_3D_PANEL_ResetKeybindsPanel)
     bpy.utils.unregister_class(VIEW_3D_PIE_KeyframePie)
+    
+    for _class in reversed(classes):
+        bpy.utils.register_class(_class)
 
 
 
