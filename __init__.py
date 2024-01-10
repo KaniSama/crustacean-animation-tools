@@ -10,8 +10,8 @@ from bpy.types import (
 
 
 bl_info = {
-    "name": "Crustacean Animation Toolset",
-    "author": "crab emoji",
+    "name": " 🦀 Crustacean Animation Toolset 🦀",
+    "author": "crab emoji 🦀",
     "version": (0, 0, 1),
     "blender": (3, 6, 2),
     "location": "?",
