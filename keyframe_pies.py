@@ -156,7 +156,7 @@ def unregister():
     bpy.utils.unregister_class(VIEW_3D_PANEL_ResetKeybindsPanel)
     bpy.utils.unregister_class(VIEW_3D_PIE_KeyframePie)
     
-    for _class in reversed(classes):
+    for _class in classes:
         bpy.utils.register_class(_class)
 
 

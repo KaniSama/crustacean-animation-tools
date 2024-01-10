@@ -17,8 +17,8 @@ bl_info = {
     "location": "?",
     "description": "Adds workflow improvements for some very specific animation needs.",
     "warning": "Inividual modules lack proper testing, may cause problems",
-    "wiki_url":    "https://github.com/kanisama/crustacean-animation-tools",
-    "tracker_url": "https://github.com/kanisama/crustacean-animation-tools/issues",
+    "wiki_url":    "https://github.com/KaniSama/crustacean-animation-tools",
+    "tracker_url": "https://github.com/KaniSama/crustacean-animation-tools/issues",
     "category": "Animation",
 }
 

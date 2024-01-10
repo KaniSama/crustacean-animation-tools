@@ -72,7 +72,7 @@ def register():
             bpy.types.DOPESHEET_MT_key.append(_class.menu_item)
 
 def unregister():
-    for _class in reversed(classes):
+    for _class in classes:
         bpy.utils.register_class(_class)
         
         if (callable(_class.menu_item)):
