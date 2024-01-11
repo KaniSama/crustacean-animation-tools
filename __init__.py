@@ -17,7 +17,7 @@ bl_info = {
     "location": "?",
     "description": "Adds workflow improvements for some very specific animation needs.",
     "warning": "Inividual modules lack proper testing, may cause problems",
-    "wiki_url":    "https://github.com/KaniSama/crustacean-animation-tools",
+    "wiki_url":    "https://github.com/KaniSama/crustacean-animation-tools/blob/main/README.md",
     "tracker_url": "https://github.com/KaniSama/crustacean-animation-tools/issues",
     "category": "Animation",
 }
@@ -99,11 +99,26 @@ def unregister_submodule(mod):
 
 
 
+class OpenDocsOperator(bpy.types.Operator):
+    """Open a web browser window with the documentation for the add-on"""
+    bl_idname = "cat.opendocs"
+    bl_label = "Open Documentation"
+    bl_options = {'REGISTER', 'UNDO'}
+    
+    def execute(self, context):
+        bpy.ops.wm.url_open(url='https://github.com/KaniSama/crustacean-animation-tools/blob/main/README.md')
+        
+        return {"FINISHED"}
+
+
+
 class CrustaceanAnimationPrefs(AddonPreferences):
     bl_idname = __name__
 
     def draw(self, context):
         layout = self.layout
+        
+        layout.operator("cat.opendocs", text='Open Documentation', icon="HELP")
 
         for mod in sub_modules:
             mod_name = mod.__name__.split('.')[-1]
@@ -215,6 +230,7 @@ for mod in sub_modules:
 
 
 classes = (
+    OpenDocsOperator,
     CrustaceanAnimationPrefs,
 )
 
