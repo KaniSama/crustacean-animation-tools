@@ -34,7 +34,7 @@ Latches onto the key binding you already have set to "Insert Keyframe". Press it
 
 | Old menu: | New menu: |
 | ------ | ------ |
-| ![Showcase of the add-on: old menu](https://github.com/KaniSama/crustacean-animation-tools/blob/main/images/KeyframePies/OldMenu.png?raw=true) | ![Showcase of the add-on: new menu](https://github.com/KaniSama/crustacean-animation-tools/blob/main/images/KeyframePies/NewMenu.png?raw=true) |
+| ![Showcase of the add-on: old menu](https://github.com/KaniSama/crustacean-animation-tools/blob/main/images/KeyframePies/KeyframePiesOldMenu.png?raw=true) | ![Showcase of the add-on: new menu](https://github.com/KaniSama/crustacean-animation-tools/blob/main/images/KeyframePies/KeyframePiesNewMenu.png?raw=true) |
 
 
 Only works in Pose Mode.
@@ -45,4 +45,4 @@ Only works in Pose Mode.
 - In the toolbox on the left, click "Start add-on" under "Keyframe Pies".
 That should bring it back.
 
-![Instructions on restarting the add-on](https://github.com/KaniSama/crustacean-animation-tools/blob/main/images/KeyframePiesDocs.png?raw=true)
+![Instructions on restarting the add-on](https://github.com/KaniSama/crustacean-animation-tools/blob/main/images/KeyframePies/KeyframePiesDocs.png?raw=true)
