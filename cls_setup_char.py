@@ -20,26 +20,32 @@ class CLS_SETUP_CHAR_MT(bpy.types.Operator):
     bl_options = {'REGISTER', 'UNDO'}
     
     # Property determines whether the Root bone is included in the keyframe insertion
-    # Does not work if the Root bone is named ANYTHING other than 'Root' (case-sensitive)
-    include_root: bpy.props.BoolProperty()
+    include_root: bpy.props.BoolProperty(default = False)
+    # Determines which frame to set the keyframes on
+    frame_to_key: bpy.props.IntProperty(default = bpy.context.scene.frame_start - 100)
+    # Determines which bone is the Root (if it's included)
+    root_bone_name: bpy.props.StringProperty(default = "P-root")
+    
     
     def invoke(self, context, event):
         return context.window_manager.invoke_props_dialog(self)
     
     def draw(self, context):
         row = self.layout
+        row.prop(self, "frame_to_key", text="Set keyframes on frame:")
         row.prop(self, "include_root", text="Also set keyframe for the Root bone")
+        if self.include_root:
+            row.prop(self, "root_bone_name", text="Root bone")
+        
     
     def execute(self, context):
         
-        # 1. ?? Get the mode we're in?
+        # 1. Get the mode we're in
         _current_mode = context.mode
         
-        # 2. ?? Enable Pose Mode?
+        # 2. Enable Pose Mode
         if _current_mode != 'POSE':
             bpy.ops.object.mode_set(mode='POSE')
-            # report(type = 'ERROR', message = 'Operation only available in Pose Mode')
-            # return {'CANCELLED'}
         
         # 3. Remember current frame
         _current_frame = context.scene.frame_current
@@ -53,7 +59,7 @@ class CLS_SETUP_CHAR_MT(bpy.types.Operator):
             context.scene.frame_set(_current_frame)
             return {'CANCELLED'}
         
-        # 5. ?? Select all bones & reset their properties
+        # 5. Select all bones & reset their properties
         bpy.ops.pose.select_all(action='SELECT')
         
         if not self.include_root:
