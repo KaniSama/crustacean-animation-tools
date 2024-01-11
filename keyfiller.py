@@ -23,14 +23,14 @@ class KEYFILLER_MT(bpy.types.Operator):
     
     def execute(self, context):
         
-        # TODO : THIS WHOLE BIT ->
-        ## -1. ?? Remember the hidden channels & current frame
+        ## 0. Remember the hidden channels & current frame
         _visible_channels_prev = context.visible_fcurves #context.active_action.fcurves
         _current_frame_prev = context.scene.frame_current
-        ## 0. ?? Unhide all channels
+        
+        ## 1. Unhide all channels
         for __channel in context.active_action.fcurves:
             __channel.hide = False
-        ## 1. Get all keyframes
+            
         ## 2. Iterate over all existing keyframes. Insert a keyframe for all channels where there's a keyframe on any channel.
         bpy.ops.screen.frame_jump(end = False)
         bpy.ops.screen.keyframe_jump(next = False)
@@ -45,7 +45,8 @@ class KEYFILLER_MT(bpy.types.Operator):
                 
         ## 3. Return the caret to the original position
         context.scene.frame_set(_current_frame_prev)
-        ## 4. ?? Hide all previously hidden channels
+        
+        ## 4. Hide all previously hidden channels
         for __channel in context.active_action.fcurves:
             if __channel not in _visible_channels_prev:
                 __channel.hide = True

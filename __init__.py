@@ -12,7 +12,7 @@ from bpy.types import (
 bl_info = {
     "name": " 🦀 Crustacean Animation Toolset 🦀",
     "author": "crab emoji 🦀",
-    "version": (0, 0, 1),
+    "version": (0, 0, 2),
     "blender": (3, 6, 2),
     "location": "?",
     "description": "Adds workflow improvements for some very specific animation needs.",
@@ -26,6 +26,7 @@ bl_info = {
 sub_modules_names = (
     "keyframe_pies",
     "keyfiller",
+    "cls_setup_char",
 )
 
 
