@@ -4,6 +4,7 @@ Download latest release [here](https://github.com/KaniSama/crustacean-animation-
 # summary
 1. [Keyfiller](#keyfiller)
 2. [Keyframe Pies](#keyframe-pies)
+3. [Sim setup (CLS)](#cls-sim-setup)
 
 # keyfiller
 
@@ -46,3 +47,21 @@ Only works in Pose Mode.
 That should bring it back.
 
 ![Instructions on restarting the add-on](https://github.com/KaniSama/crustacean-animation-tools/blob/main/images/KeyframePies/KeyframePiesDocs.png?raw=true)
+
+
+
+
+# cls-sim-setup
+
+
+This module inserts an initial keyframe for a selected rig. Make sure you already have the necessary F-curves.
+
+Dopesheet > Key > Setup for simulation
+
+![Showcase of the add-on: Menu](https://github.com/KaniSama/crustacean-animation-tools/blob/main/images/CLSSetup/CLSSetupMenu.png?raw=true)
+
+![Showcase of the add-on: Ignore root toggle](https://github.com/KaniSama/crustacean-animation-tools/blob/main/images/CLSSetup/CLSSetupMenu2.png?raw=true)
+
+| No "Ignore root": | With "Ignore root": |
+| ------ | ------ |
+| ![Showcase of the add-on: root](https://github.com/KaniSama/crustacean-animation-tools/blob/main/images/CLSSetup/CLSSetupAfterWithRoot.gif?raw=true) | ![Showcase of the add-on: no root](https://github.com/KaniSama/crustacean-animation-tools/blob/main/images/CLSSetup/CLSSetupAfterNoRoot.gif?raw=true) |

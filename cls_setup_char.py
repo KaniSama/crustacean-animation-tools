@@ -20,9 +20,9 @@ class CLS_SETUP_CHAR_MT(bpy.types.Operator):
     bl_options = {'REGISTER', 'UNDO'}
     
     # Property determines whether the Root bone is included in the keyframe insertion
-    include_root: bpy.props.BoolProperty(default = False)
+    ignore_root: bpy.props.BoolProperty(default = False)
     # Determines which frame to set the keyframes on
-    frame_to_key: bpy.props.IntProperty(default = bpy.context.scene.frame_start - 100)
+    frame_to_key: bpy.props.IntProperty(default = 901) #bpy.context.scene.frame_start - 100)
     # Determines which bone is the Root (if it's included)
     root_bone_name: bpy.props.StringProperty(default = "P-root")
     
@@ -33,8 +33,8 @@ class CLS_SETUP_CHAR_MT(bpy.types.Operator):
     def draw(self, context):
         row = self.layout
         row.prop(self, "frame_to_key", text="Set keyframes on frame:")
-        row.prop(self, "include_root", text="Also set keyframe for the Root bone")
-        if self.include_root:
+        row.prop(self, "ignore_root", text="Ignore root bone")
+        if self.ignore_root:
             row.prop(self, "root_bone_name", text="Root bone")
         
     
@@ -51,19 +51,20 @@ class CLS_SETUP_CHAR_MT(bpy.types.Operator):
         _current_frame = context.scene.frame_current
         
         # 4. Move to Frame1 and calculate Frame1 - 100
-        bpy.ops.screen.frame_jump(end = False)
-        context.scene.frame_set(context.scene.frame_current - 100)
+        # bpy.ops.screen.frame_jump(end = False)
+        # context.scene.frame_set(context.scene.frame_current - 100)
+        context.scene.frame_set(self.frame_to_key)
         
         if context.scene.frame_current < 0:
-            self.report(type = {'ERROR'}, message = 'Animation needs to start at least on frame 100 !')
+            self.report(type = {'ERROR'}, message = 'Cannot insert keyframes on negative frames!')
             context.scene.frame_set(_current_frame)
             return {'CANCELLED'}
         
         # 5. Select all bones & reset their properties
         bpy.ops.pose.select_all(action='SELECT')
         
-        if not self.include_root:
-            __root_bone = bpy.context.object.pose.bones.get("Root")
+        if self.ignore_root:
+            __root_bone = bpy.context.object.pose.bones.get(self.root_bone_name)
             if __root_bone:
                 __root_bone.bone.select = False
         
@@ -73,6 +74,7 @@ class CLS_SETUP_CHAR_MT(bpy.types.Operator):
         
         # 6. Insert keyframe on all channels
         bpy.ops.action.keyframe_insert(type='ALL')
+        # bpy.ops.anim.keyframe_insert_by_name(type="WholeCharacter")
         
         # 7. Set caret to where it was previously
         context.scene.frame_set(_current_frame)
