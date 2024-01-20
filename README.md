@@ -64,4 +64,4 @@ Dopesheet > Key > Setup for simulation
 
 | No "Ignore root": | With "Ignore root": |
 | ------ | ------ |
-| ![Showcase of the add-on: root](https://github.com/KaniSama/crustacean-animation-tools/blob/main/images/CLSSetup/CLSSetupAfterWithRoot.gif?raw=true) | ![Showcase of the add-on: no root](https://github.com/KaniSama/crustacean-animation-tools/blob/main/images/CLSSetup/CLSSetupAfterNoRoot.gif?raw=true) |
+| ![Showcase of the add-on: root](https://github.com/KaniSama/crustacean-animation-tools/blob/main/images/CLSSetup/CLSSetupAfterWithRoot.gif?raw=true) | ![Showcase of the add-on: no root](https://github.com/KaniSama/crustacean-animation-tools/blob/main/images/CLSSetup/CLSSetupNoRoot.gif?raw=true) |
