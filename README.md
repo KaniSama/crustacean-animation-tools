@@ -3,13 +3,14 @@ Download latest release [here](https://github.com/KaniSama/crustacean-animation-
 
 # summary
 1. [Keyfiller](#keyfiller)
-2. [Keyframe Pies](#keyframe-pies)
-3. [Sim setup (CLS)](#cls-sim-setup)
+2. [Keychooser](#keychooser)
+3. [Keyframe Pies](#keyframe-pies)
+4. [Sim setup (CLS)](#cls-sim-setup)
 
 # keyfiller
 
 
-This add-on adds a function to the dope sheet editor to insert keyframes on all channels wherever there's a keyframe on any channel.
+This add-on adds a function to the dope sheet that inserts keyframes on all channels wherever there's a keyframe on any channel.
 
 Dopesheet > Key > Keyfill
 
@@ -20,6 +21,14 @@ Works on all channels only for selected bones / objects.
 | Before Keyfill: | After Keyfill: |
 | ------ | ------ |
 | ![Showcase of the add-on: before](https://github.com/KaniSama/crustacean-animation-tools/blob/main/images/Keyfiller/Before.png?raw=true) | ![Showcase of the add-on: after](https://github.com/KaniSama/crustacean-animation-tools/blob/main/images/Keyfiller/After.png?raw=true) |
+
+
+
+
+# keychooser
+
+
+This add-on adds a function to the dope sheet that selects/deselects keyframes on every Nth frame.
 
 
 
